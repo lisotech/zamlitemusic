@@ -12,7 +12,7 @@
             --card-hover: #252525;
             --text-color: #ffffff;
             --text-muted: #b3b3b3;
-            --accent-color: #ff8c00; /* Audiomack style orange */
+            --accent-color: #ff8c00;
             --accent-hover: #ffa500;
             --border-color: #282828;
         }
@@ -29,16 +29,18 @@
             color: var(--text-color);
             display: flex;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* App Layout Wrapper for Desktop Sidebar Layout */
+        /* App Layout Wrapper */
         .app-layout {
             display: flex;
             width: 100%;
             min-height: 100vh;
+            position: relative;
         }
 
-        /* Sidebar Navigation */
+        /* Desktop Sidebar Navigation */
         aside.sidebar {
             width: 240px;
             background-color: var(--sidebar-bg);
@@ -50,13 +52,14 @@
             bottom: 0;
             left: 0;
             z-index: 200;
+            transition: transform 0.3s ease;
         }
 
         .sidebar-logo-container {
             padding: 20px 24px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
         }
 
         .logo {
@@ -73,12 +76,31 @@
             color: var(--accent-color);
         }
 
+        /* Close Button for Mobile Drawer */
+        .sidebar-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+        }
+
         .sidebar-menu {
             list-style: none;
             padding: 10px 12px;
             display: flex;
             flex-direction: column;
             gap: 4px;
+        }
+
+        .sidebar-menu .menu-category-title {
+            padding: 12px 16px 6px 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 700;
         }
 
         .sidebar-menu li a {
@@ -111,6 +133,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            width: calc(100% - 240px);
         }
 
         /* Top Header */
@@ -118,18 +141,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 32px;
+            padding: 16px 24px;
             border-bottom: 1px solid var(--border-color);
             background-color: var(--bg-color);
             position: sticky;
             top: 0;
             z-index: 100;
+            gap: 12px;
         }
 
         .header-search-container {
             flex: 1;
             max-width: 500px;
-            margin: 0 20px;
             position: relative;
         }
 
@@ -166,7 +189,7 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .sign-in-btn {
@@ -183,46 +206,42 @@
             color: var(--accent-color);
         }
 
-        .upload-btn {
-            background-color: var(--accent-color);
-            color: #000;
-            border: none;
-            padding: 9px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
+        /* Hamburger Menu Toggle Button on Top Right */
+        .menu-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 1.2rem;
             cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 6px;
             transition: background-color 0.2s;
-            text-decoration: none;
         }
 
-        .upload-btn:hover {
-            background-color: var(--accent-hover);
+        .menu-toggle:hover {
+            background-color: #222;
         }
 
         /* Content Area */
         .content-area {
-            padding: 24px 32px;
+            padding: 24px;
             flex: 1;
         }
 
         /* Hero Banner */
         .hero-banner {
-            margin-bottom: 32px;
-            padding: 36px;
+            margin-bottom: 28px;
+            padding: 30px;
             background: linear-gradient(135deg, #252525, #141414);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .hero-text h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             margin-bottom: 8px;
         }
@@ -232,7 +251,7 @@
         }
 
         .hero-banner p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.5;
             color: var(--text-muted);
             max-width: 600px;
@@ -246,7 +265,7 @@
         }
 
         .section-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--text-color);
             letter-spacing: 0.5px;
@@ -264,18 +283,18 @@
             color: var(--text-color);
         }
 
-        /* Desktop Grid Layout (6 columns for optimal desktop viewing) */
+        /* Grid Layout: Responsive columns */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
         }
 
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 12px;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -294,7 +313,7 @@
             background-color: #2a2a2a;
             border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .artwork-container img {
@@ -305,11 +324,11 @@
         }
 
         .card-info {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .artist-name {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             white-space: nowrap;
             overflow: hidden;
@@ -317,7 +336,7 @@
         }
 
         .track-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
             color: var(--text-color);
             white-space: nowrap;
@@ -335,8 +354,8 @@
             background-color: #2a2a2a;
             border: none;
             color: var(--text-color);
-            font-size: 0.75rem;
-            padding: 7px 0;
+            font-size: 0.7rem;
+            padding: 6px 0;
             border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
@@ -362,25 +381,32 @@
         }
 
         .no-results {
-            grid-column: span 6;
+            grid-column: 1 / -1;
             text-align: center;
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 0.95rem;
             padding: 40px 0;
             display: none;
         }
 
         /* Footer */
         footer {
-            padding: 20px 32px;
+            padding: 20px 24px;
             text-align: center;
             border-top: 1px solid var(--border-color);
             background-color: var(--bg-color);
             font-size: 0.8rem;
             color: var(--text-muted);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        @media (min-width: 768px) {
+            footer {
+                flex-direction: row;
+                justify-content: space-between;
+            }
         }
 
         .designer-credit {
@@ -388,23 +414,46 @@
             color: #888;
         }
 
-        /* Responsive adjustments for smaller screens */
+        /* Overlay for drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 150;
+            display: none;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* Responsive Layout Adjustments */
         @media (max-width: 1024px) {
             aside.sidebar {
-                width: 70px;
+                transform: translateX(-100%);
+                width: 260px;
+                box-shadow: 5px 0 15px rgba(0,0,0,0.5);
             }
-            aside.sidebar .logo span,
-            aside.sidebar .sidebar-menu span {
-                display: none;
+
+            aside.sidebar.open {
+                transform: translateX(0);
             }
+
+            .sidebar-close-btn {
+                display: block;
+            }
+
             .main-wrapper {
-                margin-left: 70px;
+                margin-left: 0;
+                width: 100%;
             }
+
             .cards-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .no-results {
-                grid-column: span 3;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
         }
     </style>
@@ -412,12 +461,15 @@
 <body>
 
     <div class="app-layout">
-        <!-- Sidebar Navigation (Audiomack Desktop Style) -->
-        <aside class="sidebar">
+        <!-- Sidebar Navigation Drawer -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-logo-container">
                 <div class="logo">⚡ ZAMLITE<span>MEDIA</span></div>
+                <button class="sidebar-close-btn" id="sidebarCloseBtn">&times;</button>
             </div>
             <ul class="sidebar-menu">
+                <li class="menu-category-title">Browse</li>
                 <li class="active"><a href="#">🔥 <span>Discover</span></a></li>
                 <li><a href="#">📈 <span>Charts</span></a></li>
                 <li><a href="#">🎵 <span>Playlists</span></a></li>
@@ -431,11 +483,14 @@
             <!-- Header -->
             <header>
                 <div class="header-search-container">
-                    <input type="text" id="searchInput" class="search-bar" placeholder="Search for artists, songs, albums...">
+                    <input type="text" id="searchInput" class="search-bar" placeholder="Search artists or track...">
                 </div>
                 <div class="header-actions">
-                    <button class="sign-in-btn">Sign In</button>
-                    <a href="#" class="upload-btn">⬆ UPLOAD</a>
+                    <button class="sign-in-btn">Sign-in</button>
+                    <!-- Replaced upload button with standard menu bar lines button -->
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                        <span>&#9776;</span> Menu
+                    </button>
                 </div>
             </header>
 
@@ -445,7 +500,7 @@
                 <section class="hero-banner">
                     <div class="hero-text">
                         <h1>The music platform empowering <span>artists</span></h1>
-                        <p>Zamlite Media is an artist-first music platform that helps musicians connect, reach, and engage fans across the world.</p>
+                        <p>The music platform that helps the artists to connect with their fans. Zamlite Music, we are here for you.</p>
                     </div>
                 </section>
 
@@ -616,8 +671,23 @@
         </div>
     </div>
 
-    <!-- Script to handle audio playback and search functionality -->
+    <!-- Script to handle sidebar toggle, audio playback, and search functionality -->
     <script>
+        // Sidebar Drawer Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('active');
+        }
+
+        menuToggle.addEventListener('click', toggleSidebar);
+        sidebarCloseBtn.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+
         // Audio Playback Handler
         document.querySelectorAll('.card').forEach(card => {
             const playBtn = card.querySelector('.action-btn.play');
