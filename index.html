@@ -31,7 +31,7 @@
             min-height: 100vh;
         }
 
-        /* Fluid wrapper that looks like the mobile-first sketch on phones, but expands seamlessly on desktop screens */
+        /* Mobile View: Fluid container matching 3x3 layout constraints */
         .page-container {
             width: 100%;
             max-width: 480px;
@@ -127,7 +127,7 @@
             color: var(--text-color);
         }
 
-        /* 3x3 Grid layout for mobile/constrained view, adapting to a wider layout on large desktop screens */
+        /* Mobile Default: 3 Columns Grid layout */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -252,21 +252,21 @@
             color: #888;
         }
 
-        /* Desktop Wide Screen Adaptation maintaining the 3x3 layout structure comfortably with open screen bounds */
+        /* Desktop Wide Screen Adaptation: 6 columns layout */
         @media (min-width: 768px) {
             body {
                 background-color: #0a0a0a;
             }
 
             .page-container {
-                max-width: 850px;
+                max-width: 1200px;
                 border-left: 1px solid var(--border-color);
                 border-right: 1px solid var(--border-color);
                 box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
             }
 
             .cards-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(6, 1fr);
                 gap: 16px;
             }
 
@@ -301,6 +301,10 @@
                 font-size: 0.75rem;
                 padding: 7px 0;
             }
+
+            .no-results {
+                grid-column: span 6;
+            }
         }
     </style>
 </head>
@@ -326,7 +330,7 @@
             <section>
                 <div class="section-title">Featured Artist:</div>
                 
-                <!-- 3x3 Grid of Cards -->
+                <!-- Grid of Cards (3x3 on Mobile, 6x8 compatible layout on Desktop) -->
                 <div class="cards-grid" id="cardsGrid">
                     <!-- Card 1 -->
                     <div class="card" data-artist="Wizkid" data-track="Ojuelegba">
