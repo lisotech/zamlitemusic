@@ -136,19 +136,21 @@
             border-color: #444;
         }
 
-        .artwork-placeholder {
+        .artwork-container {
             width: 100%;
             aspect-ratio: 1;
             background-color: #2a2a2a;
             border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-align: center;
+            overflow: hidden;
             margin-bottom: 6px;
-            border: 1px dashed #444;
+            border: 1px solid #444;
+        }
+
+        .artwork-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .card-info {
@@ -254,7 +256,9 @@
                 <div class="cards-grid">
                     <!-- Card 1 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Ojuelegba Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Ojuelegba</div>
@@ -268,7 +272,9 @@
 
                     <!-- Card 2 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Essence Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Essence</div>
@@ -282,7 +288,9 @@
 
                     <!-- Card 3 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Come Closer Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Come Closer</div>
@@ -296,7 +304,9 @@
 
                     <!-- Card 4 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Fever Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Fever</div>
@@ -310,7 +320,9 @@
 
                     <!-- Card 5 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Joro Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Joro</div>
@@ -324,7 +336,9 @@
 
                     <!-- Card 6 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Smile Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Smile</div>
@@ -338,7 +352,9 @@
 
                     <!-- Card 7 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Bad To Me Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Bad To Me</div>
@@ -352,7 +368,9 @@
 
                     <!-- Card 8 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Money & Love Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Money & Love</div>
@@ -366,7 +384,9 @@
 
                     <!-- Card 9 -->
                     <div class="card">
-                        <div class="artwork-placeholder">albumcover.png</div>
+                        <div class="artwork-container">
+                            <img src="albumcover.png" alt="Wizkid - Blessed Artwork">
+                        </div>
                         <div class="card-info">
                             <div class="artist-name">Wizkid</div>
                             <div class="track-title">Blessed</div>
