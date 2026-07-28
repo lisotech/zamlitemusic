@@ -70,6 +70,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
         }
 
         .logo span {
@@ -92,6 +93,7 @@
             display: flex;
             flex-direction: column;
             gap: 4px;
+            flex: 1;
         }
 
         .sidebar-menu .menu-category-title {
@@ -126,6 +128,33 @@
             color: var(--accent-color);
         }
 
+        /* Mobile Sign-in Container inside Sidebar */
+        .sidebar-footer-action {
+            padding: 16px;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .mobile-signin-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-signin-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
         /* Main Content Wrapper */
         .main-wrapper {
             margin-left: 240px;
@@ -150,9 +179,31 @@
             gap: 12px;
         }
 
-        .header-search-container {
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
             flex: 1;
             max-width: 500px;
+        }
+
+        /* Mobile inline brand logo (hidden on desktop) */
+        .mobile-brand-logo {
+            display: none;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            color: var(--text-color);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .mobile-brand-logo span {
+            color: var(--accent-color);
+        }
+
+        .header-search-container {
+            flex: 1;
             position: relative;
         }
 
@@ -206,7 +257,7 @@
             color: var(--accent-color);
         }
 
-        /* Hamburger Menu Toggle Button on Top Right (Symbols Only) */
+        /* Hamburger Menu Toggle Button on Top Right */
         .menu-toggle {
             background: none;
             border: 1px solid var(--border-color);
@@ -446,6 +497,18 @@
                 display: block;
             }
 
+            .sidebar-footer-action {
+                display: block;
+            }
+
+            .sign-in-btn {
+                display: none; /* Hidden from top header on mobile */
+            }
+
+            .mobile-brand-logo {
+                display: inline-block; /* Show small brand logo on mobile top left */
+            }
+
             .main-wrapper {
                 margin-left: 0;
                 width: 100%;
@@ -476,18 +539,25 @@
                 <li><a href="#">📡 <span>Feed</span></a></li>
                 <li><a href="#">📚 <span>My Library</span></a></li>
             </ul>
+            <!-- Sign-in option repositioned inside the mobile menu drawer -->
+            <div class="sidebar-footer-action">
+                <button class="mobile-signin-btn">Sign-in</button>
+            </div>
         </aside>
 
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
             <header>
-                <div class="header-search-container">
-                    <input type="text" id="searchInput" class="search-bar" placeholder="Search artists or track...">
+                <div class="header-left">
+                    <a href="#" class="mobile-brand-logo">ZAMLITE<span>MEDIA</span></a>
+                    <div class="header-search-container">
+                        <input type="text" id="searchInput" class="search-bar" placeholder="Search artists or track...">
+                    </div>
                 </div>
                 <div class="header-actions">
                     <button class="sign-in-btn">Sign-in</button>
-                    <!-- Hamburger Menu Toggle Button (Symbols Only) -->
+                    <!-- Hamburger Menu Toggle Button on Top Right -->
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">&#9776;</button>
                 </div>
             </header>
