@@ -69,15 +69,20 @@
             background: #2a2a2a;
             padding: 6px 12px;
             border-radius: 20px;
-            color: var(--text-muted);
+            color: var(--text-color);
             font-size: 0.85rem;
             flex-grow: 1;
             margin: 0 10px;
-            text-align: left;
             border: 1px solid transparent;
+            outline: none;
+            width: 100%;
         }
 
-        .search-bar:focus-within {
+        .search-bar::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-bar:focus {
             border-color: var(--accent-color);
         }
 
@@ -220,6 +225,15 @@
             background-color: #3a3a3a;
         }
 
+        .no-results {
+            grid-column: span 3;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 20px 0;
+            display: none;
+        }
+
         footer {
             padding: 16px;
             text-align: center;
@@ -296,7 +310,7 @@
         <!-- Header -->
         <header>
             <div class="logo">ZAMLITE MEDIA</div>
-            <div class="search-bar">search</div>
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search artist or track...">
             <button class="sign-in-btn">sign-in</button>
         </header>
 
@@ -313,9 +327,9 @@
                 <div class="section-title">Featured Artist:</div>
                 
                 <!-- 3x3 Grid of Cards -->
-                <div class="cards-grid">
+                <div class="cards-grid" id="cardsGrid">
                     <!-- Card 1 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Ojuelegba">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Ojuelegba Artwork">
                         </div>
@@ -331,7 +345,7 @@
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Essence">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Essence Artwork">
                         </div>
@@ -347,7 +361,7 @@
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Come Closer">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Come Closer Artwork">
                         </div>
@@ -363,7 +377,7 @@
                     </div>
 
                     <!-- Card 4 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Fever">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Fever Artwork">
                         </div>
@@ -379,7 +393,7 @@
                     </div>
 
                     <!-- Card 5 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Joro">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Joro Artwork">
                         </div>
@@ -395,7 +409,7 @@
                     </div>
 
                     <!-- Card 6 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Smile">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Smile Artwork">
                         </div>
@@ -411,7 +425,7 @@
                     </div>
 
                     <!-- Card 7 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Bad To Me">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Bad To Me Artwork">
                         </div>
@@ -427,7 +441,7 @@
                     </div>
 
                     <!-- Card 8 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Money & Love">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Money & Love Artwork">
                         </div>
@@ -443,7 +457,7 @@
                     </div>
 
                     <!-- Card 9 -->
-                    <div class="card">
+                    <div class="card" data-artist="Wizkid" data-track="Blessed">
                         <div class="artwork-container">
                             <img src="albumcover.png" alt="Wizkid - Blessed Artwork">
                         </div>
@@ -457,6 +471,9 @@
                             <a href="Wizkid_Blessed.mp3" download="Wizkid_Blessed.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
+
+                    <!-- No Results Message -->
+                    <div class="no-results" id="noResults">No tracks or artists found matching your search.</div>
                 </div>
             </section>
 
@@ -469,8 +486,9 @@
         </footer>
     </div>
 
-    <!-- Script to handle audio playback toggling -->
+    <!-- Script to handle audio playback and search functionality -->
     <script>
+        // Audio Playback Handler
         document.querySelectorAll('.card').forEach(card => {
             const playBtn = card.querySelector('.action-btn.play');
             const audio = card.querySelector('audio');
@@ -502,6 +520,34 @@
                 audio.addEventListener('ended', () => {
                     playBtn.textContent = 'Play';
                 });
+            }
+        });
+
+        // Search Engine Functionality
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.cards-grid .card');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            let matchCount = 0;
+
+            cards.forEach(card => {
+                const artist = card.getAttribute('data-artist').toLowerCase();
+                const track = card.getAttribute('data-track').toLowerCase();
+
+                if (artist.includes(query) || track.includes(query)) {
+                    card.style.display = 'flex';
+                    matchCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (matchCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
             }
         });
     </script>
