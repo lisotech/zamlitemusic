@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAMLITE MEDIA</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         :root {
             --bg-color: #121212;
@@ -71,6 +72,13 @@
             align-items: center;
             gap: 6px;
             text-decoration: none;
+        }
+
+        .logo img {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         .logo span {
@@ -182,7 +190,7 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex: 1;
             max-width: 500px;
         }
@@ -196,6 +204,15 @@
             color: var(--text-color);
             white-space: nowrap;
             text-decoration: none;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mobile-brand-logo img {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         .mobile-brand-logo span {
@@ -440,23 +457,24 @@
             display: none;
         }
 
-        /* Footer */
+        /* Footer - Reduced height */
         footer {
-            padding: 20px 24px;
+            padding: 10px 16px;
             text-align: center;
             border-top: 1px solid var(--border-color);
             background-color: var(--bg-color);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         @media (min-width: 768px) {
             footer {
                 flex-direction: row;
                 justify-content: space-between;
+                align-items: center;
             }
         }
 
@@ -506,7 +524,7 @@
             }
 
             .mobile-brand-logo {
-                display: inline-block; /* Show small brand logo on mobile top left */
+                display: inline-flex; /* Show small brand logo on mobile top left */
             }
 
             .main-wrapper {
@@ -528,7 +546,7 @@
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-logo-container">
-                <div class="logo">⚡ ZAMLITE<span>MEDIA</span></div>
+                <a href="#" class="logo"><img src="logo.png" alt="Logo"> ZAMLITE<span>MEDIA</span></a>
                 <button class="sidebar-close-btn" id="sidebarCloseBtn">&times;</button>
             </div>
             <ul class="sidebar-menu">
@@ -550,7 +568,7 @@
             <!-- Header -->
             <header>
                 <div class="header-left">
-                    <a href="#" class="mobile-brand-logo">ZAMLITE<span>MEDIA</span></a>
+                    <a href="#" class="mobile-brand-logo"><img src="logo.png" alt="Logo"> ZAMLITE<span>MEDIA</span></a>
                     <div class="header-search-container">
                         <input type="text" id="searchInput" class="search-bar" placeholder="Search artists or track...">
                     </div>
