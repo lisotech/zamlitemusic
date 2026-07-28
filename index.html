@@ -206,18 +206,18 @@
             color: var(--accent-color);
         }
 
-        /* Hamburger Menu Toggle Button on Top Right */
+        /* Hamburger Menu Toggle Button on Top Right (Symbols Only) */
         .menu-toggle {
             background: none;
             border: 1px solid var(--border-color);
             color: var(--text-color);
             font-size: 1.2rem;
             cursor: pointer;
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 8px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
             transition: background-color 0.2s;
         }
 
@@ -487,10 +487,8 @@
                 </div>
                 <div class="header-actions">
                     <button class="sign-in-btn">Sign-in</button>
-                    <!-- Replaced upload button with standard menu bar lines button -->
-                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                        <span>&#9776;</span> Menu
-                    </button>
+                    <!-- Hamburger Menu Toggle Button (Symbols Only) -->
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">&#9776;</button>
                 </div>
             </header>
 
