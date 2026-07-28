@@ -8,6 +8,7 @@
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
+            --card-hover: #252525;
             --text-color: #ffffff;
             --text-muted: #b3b3b3;
             --accent-color: #1db954;
@@ -30,6 +31,7 @@
             min-height: 100vh;
         }
 
+        /* Fluid wrapper that looks like the mobile-first sketch on phones, but expands seamlessly on desktop screens */
         .page-container {
             width: 100%;
             max-width: 480px;
@@ -40,6 +42,7 @@
             min-height: 100vh;
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
+            transition: max-width 0.3s ease;
         }
 
         header {
@@ -49,6 +52,9 @@
             padding: 16px;
             border-bottom: 1px solid var(--border-color);
             background-color: #181818;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
@@ -56,6 +62,7 @@
             font-size: 0.95rem;
             letter-spacing: 0.5px;
             color: var(--text-color);
+            white-space: nowrap;
         }
 
         .search-bar {
@@ -81,6 +88,7 @@
             font-size: 0.85rem;
             cursor: pointer;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .sign-in-btn:hover {
@@ -114,6 +122,7 @@
             color: var(--text-color);
         }
 
+        /* 3x3 Grid layout for mobile/constrained view, adapting to a wider layout on large desktop screens */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -128,11 +137,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
         .card:hover {
             transform: translateY(-2px);
+            background-color: var(--card-hover);
             border-color: #444;
         }
 
@@ -185,11 +195,16 @@
             border: none;
             color: var(--text-color);
             font-size: 0.65rem;
-            padding: 4px 0;
+            padding: 5px 0;
             border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
             text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
         }
 
         .action-btn.play {
@@ -223,9 +238,54 @@
             color: #888;
         }
 
-        @media (min-width: 600px) {
+        /* Desktop Wide Screen Adaptation maintaining the 3x3 layout structure comfortably with open screen bounds */
+        @media (min-width: 768px) {
             body {
                 background-color: #0a0a0a;
+            }
+
+            .page-container {
+                max-width: 850px;
+                border-left: 1px solid var(--border-color);
+                border-right: 1px solid var(--border-color);
+                box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+
+            .card {
+                padding: 12px;
+                border-radius: 10px;
+            }
+
+            .hero-banner {
+                padding: 28px;
+                margin: 20px;
+            }
+
+            .hero-banner p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+                margin-bottom: 16px;
+            }
+
+            .artist-name {
+                font-size: 0.85rem;
+            }
+
+            .track-title {
+                font-size: 0.95rem;
+            }
+
+            .action-btn {
+                font-size: 0.75rem;
+                padding: 7px 0;
             }
         }
     </style>
@@ -266,7 +326,7 @@
                         <audio src="Wizkid_Ojuelegba.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Ojuelegba.mp3" download="Wizkid_Ojuelegba.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
 
@@ -282,7 +342,7 @@
                         <audio src="Wizkid_Essence.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Essence.mp3" download="Wizkid_Essence.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
 
@@ -298,7 +358,7 @@
                         <audio src="Wizkid_Come_Closer.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Come_Closer.mp3" download="Wizkid_Come_Closer.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
 
@@ -314,7 +374,7 @@
                         <audio src="Wizkid_Fever.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Fever.mp3" download="Wizkid_Fever.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
 
@@ -330,7 +390,7 @@
                         <audio src="Wizkid_Joro.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Joro.mp3" download="Wizkid_Joro.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
 
@@ -346,7 +406,7 @@
                         <audio src="Wizkid_Smile.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Smile.mp3" download="Wizkid_Smile.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
 
@@ -362,7 +422,7 @@
                         <audio src="Wizkid_Bad_To_Me.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Bad_To_Me.mp3" download="Wizkid_Bad_To_Me.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
 
@@ -378,7 +438,7 @@
                         <audio src="Wizkid_Money_And_Love.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Money_And_Love.mp3" download="Wizkid_Money_And_Love.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
 
@@ -394,7 +454,7 @@
                         <audio src="Wizkid_Blessed.mp3" preload="none"></audio>
                         <div class="card-actions">
                             <button class="action-btn play">Play</button>
-                            <button class="action-btn">Down</button>
+                            <a href="Wizkid_Blessed.mp3" download="Wizkid_Blessed.mp3" class="action-btn download">Down</a>
                         </div>
                     </div>
                 </div>
@@ -409,7 +469,7 @@
         </footer>
     </div>
 
-    <!-- Script to make Play buttons functional with the audio tags -->
+    <!-- Script to handle audio playback toggling -->
     <script>
         document.querySelectorAll('.card').forEach(card => {
             const playBtn = card.querySelector('.action-btn.play');
