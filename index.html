@@ -31,7 +31,7 @@
             min-height: 100vh;
         }
 
-        /* Mobile View: Fluid container matching 3x3 layout constraints */
+        /* Mobile-first wrapper configuration (3x3 grid layout) */
         .page-container {
             width: 100%;
             max-width: 480px;
@@ -127,7 +127,7 @@
             color: var(--text-color);
         }
 
-        /* Mobile Default: 3 Columns Grid layout */
+        /* Default 3x3 Grid layout for mobile view */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -252,7 +252,7 @@
             color: #888;
         }
 
-        /* Desktop Wide Screen Adaptation: 6 columns layout */
+        /* Desktop Wide Screen Adaptation (8x8 Grid layout) */
         @media (min-width: 768px) {
             body {
                 background-color: #0a0a0a;
@@ -266,7 +266,7 @@
             }
 
             .cards-grid {
-                grid-template-columns: repeat(6, 1fr);
+                grid-template-columns: repeat(8, 1fr);
                 gap: 16px;
             }
 
@@ -303,7 +303,7 @@
             }
 
             .no-results {
-                grid-column: span 6;
+                grid-column: span 8;
             }
         }
     </style>
@@ -330,7 +330,7 @@
             <section>
                 <div class="section-title">Featured Artist:</div>
                 
-                <!-- Grid of Cards (3x3 on Mobile, 6x8 compatible layout on Desktop) -->
+                <!-- Grid of Cards -->
                 <div class="cards-grid" id="cardsGrid">
                     <!-- Card 1 -->
                     <div class="card" data-artist="Wizkid" data-track="Ojuelegba">
