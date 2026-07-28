@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAMLITE MEDIA</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #181818;
+            --card-hover: #222222;
+            --text-color: #ffffff;
+            --text-muted: #b3b3b3;
+            --accent-color: #1db954;
+            --accent-hover: #1ed760;
+            --border-color: #282828;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Responsive Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: #181818;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            color: var(--text-color);
+            white-space: nowrap;
+        }
+
+        .search-bar {
+            background: #2a2a2a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 20px;
+            border: 1px solid transparent;
+            outline: none;
+        }
+
+        .search-bar:focus {
+            border-color: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        .sign-in-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+            padding: 6px 12px;
+        }
+
+        .sign-in-btn:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Container Layout */
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Hero Banner Section */
+        .hero-banner {
+            margin-bottom: 32px;
+            padding: 32px;
+            background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-banner p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Featured Artist Section */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        /* Responsive Grid Layout */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            background-color: var(--card-hover);
+            border-color: #444;
+        }
+
+        .artwork-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 12px;
+            border: 1px dashed #444;
+        }
+
+        .card-info {
+            margin-bottom: 12px;
+        }
+
+        .artist-name {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+
+        .track-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--text-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            flex: 1;
+            background-color: #2a2a2a;
+            border: none;
+            color: var(--text-color);
+            font-size: 0.8rem;
+            padding: 8px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .action-btn.play {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        .action-btn.play:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .action-btn:not(.play):hover {
+            background-color: #3a3a3a;
+        }
+
+        /* Footer Layout */
+        footer {
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            background-color: #181818;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 6px;
+        }
+
+        .designer-credit {
+            font-style: italic;
+            color: #888;
+        }
+
+        /* Media Queries for Desktop Polish */
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+                gap: 24px;
+            }
+            
+            .hero-banner p {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">ZAMLITE MEDIA</div>
+        <input type="text" class="search-bar" placeholder="search">
+        <button class="sign-in-btn">sign-in</button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Description Box -->
+        <section class="hero-banner">
+            <p>The music platform that helps the artists to connect with their fans. Zamlite Music, we are here for you.</p>
+        </section>
+
+        <!-- Featured Artist Section -->
+        <section>
+            <div class="section-title">Featured Artist:</div>
+            
+            <!-- Fluid Responsive Grid of Cards -->
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="card">
+                    <div class="artwork-placeholder">Artwork</div>
+                    <div class="card-info">
+                        <div class="artist-name">Artist name</div>
+                        <div class="track-title">Title</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn play">Play</button>
+                        <button class="action-btn">Down</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; ZAMLITE MEDIA // All Rights Reserved</p>
+        <p class="designer-credit">Designed @ LISOTECH</p>
+    </footer>
+
+</body>
+</html>
