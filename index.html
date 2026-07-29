@@ -361,18 +361,21 @@
         /* Grid Layout: Responsive columns */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 16px;
         }
 
+        /* Equalized Card Layout */
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 10px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 100%;
+            min-height: 270px;
             transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
@@ -388,7 +391,8 @@
             background-color: #2a2a2a;
             border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            flex-shrink: 0;
         }
 
         .artwork-container img {
@@ -399,7 +403,11 @@
         }
 
         .card-info {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .artist-name {
@@ -408,6 +416,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            margin-bottom: 2px;
         }
 
         .track-title {
@@ -422,6 +431,7 @@
         .card-actions {
             display: flex;
             gap: 6px;
+            margin-top: auto;
         }
 
         .action-btn {
@@ -635,7 +645,7 @@
                         </div>
 
                         <!-- Card 2 -->
-                        <div class="card" data-artist="Driemo" data-track="Essence">
+                        <div class="card" data-artist="Driemo" data-track="Ninvela So">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Driemo-ft-Yo-Maps-Ninvela-So Artwork">
                             </div>
@@ -656,7 +666,7 @@
                                 <img src="gart.png" alt="Dove-Dee-ft-Goddy-Zambia-Blame-Me Artwork">
                             </div>
                             <div class="card-info">
-                                <div class="artist-name">Dove-Dee-ft-Goddy-Zambia</div>
+                                <div class="artist-name">Dove-Dee</div>
                                 <div class="track-title">Blame Me</div>
                             </div>
                             <audio src="Dove-Dee-ft-Goddy-Zambia-Blame-Me.mp3" preload="none"></audio>
@@ -666,7 +676,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 5 -->
+                        <!-- Card 4 -->
                         <div class="card" data-artist="Wizkid" data-track="Joro">
                             <div class="artwork-container">
                                 <img src="Wizcover.png" alt="Wizkid - Joro Artwork">
@@ -682,7 +692,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 6 -->
+                        <!-- Card 5 -->
                         <div class="card" data-artist="Wizkid" data-track="Smile">
                             <div class="artwork-container">
                                 <img src="Wizcover.png" alt="Wizkid - Smile Artwork">
@@ -698,7 +708,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 7 -->
+                        <!-- Card 6 -->
                         <div class="card" data-artist="Wizkid" data-track="Bad To Me">
                             <div class="artwork-container">
                                 <img src="Wizcover.png" alt="Wizkid - Bad To Me Artwork">
@@ -714,7 +724,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 8 -->
+                        <!-- Card 7 -->
                         <div class="card" data-artist="Wizkid" data-track="Money & Love">
                             <div class="artwork-container">
                                 <img src="Wizcover.png" alt="Wizkid - Money & Love Artwork">
@@ -730,7 +740,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 9 -->
+                        <!-- Card 8 -->
                         <div class="card" data-artist="Wizkid" data-track="Blessed">
                             <div class="artwork-container">
                                 <img src="Wizcover.png" alt="Wizkid - Blessed Artwork">
