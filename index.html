@@ -545,6 +545,7 @@
             font-size: 0.95rem;
         }
 
+        /* Reduced Popup Modal Height Constraints */
         .promo-popup-overlay {
             position: fixed;
             top: 0;
@@ -556,19 +557,19 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 12px;
         }
 
         .promo-popup-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            max-width: 520px;
+            border-radius: 10px;
+            max-width: 480px;
             width: 100%;
-            padding: 24px;
+            padding: 14px 18px;
             position: relative;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            max-height: 90vh;
+            max-height: 75vh;
             overflow-y: auto;
         }
 
@@ -576,33 +577,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
             position: relative;
         }
 
         .promo-popup-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 800;
             color: var(--accent-color);
         }
 
         .promo-floating-icons {
             position: absolute;
-            top: 42%;
-            right: 16px;
+            top: 45%;
+            right: 12px;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             z-index: 10;
         }
 
         .promo-icon-btn {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -613,28 +614,28 @@
 
         .promo-icon-btn.whatsapp { background-color: #25D366; color: #ffffff; }
         .promo-icon-btn.call { background-color: #3b82f6; color: #ffffff; }
-        .promo-icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .promo-icon-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
         .promo-close-btn {
             background: none;
             border: none;
             color: var(--text-color);
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             cursor: pointer;
             font-weight: bold;
         }
 
         .promo-body {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-color);
-            line-height: 1.5;
+            line-height: 1.4;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 6px;
         }
 
         .promo-timer-text {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--accent-color);
             font-weight: bold;
         }
@@ -642,15 +643,16 @@
         .promo-section-title {
             font-weight: 700;
             color: var(--text-color);
-            margin-top: 4px;
+            margin-top: 2px;
+            font-size: 0.8rem;
         }
 
         .promo-list {
             list-style-type: disc;
-            padding-left: 20px;
+            padding-left: 18px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
             color: var(--text-muted);
         }
 
@@ -720,22 +722,20 @@
             </div>
             <div class="promo-body">
                 <div class="promo-timer-text" id="promoTimerText">This promo message will automatically close in 3:00</div>
-                <p><em>for quick response Call or WhatsApp us +260974101130</em></p>
-                <p style="font-weight: bold; color: var(--accent-color);">SAMSON LISOMONA <em>CEO &amp; Founder @Lisotech Innovations</em></p>
-                <p><em>Get yourself the following services on promotion</em></p>
+                <p><em>Quick response: Call/WhatsApp +260974101130</em></p>
+                <p style="font-weight: bold; color: var(--accent-color);">SAMSON LISOMONA <em>CEO &amp; Founder</em></p>
                 
                 <div class="promo-section-title">1. Website Development</div>
                 <ul class="promo-list">
-                    <li><span>i. individual web @K1500</span> - comes .com and free one year hosting and domain</li>
-                    <li><span>ii. Company web @K3500</span> - comes .com and free one year hosting and domain</li>
+                    <li><span>i. Individual web @K1500</span> - .com + 1 yr hosting & domain</li>
+                    <li><span>ii. Company web @K3500</span> - .com + 1 yr hosting & domain</li>
                 </ul>
 
-                <div class="promo-section-title">2. Company registration and Compliance</div>
-                <p style="font-size: 0.8rem; font-weight: bold; margin-top: 2px;">A. PACRA Services</p>
+                <div class="promo-section-title">2. Company Reg. & Compliance</div>
                 <ul class="promo-list">
-                    <li><span>i. Business @K850 only</span> - comes with PACRA Business Certificate</li>
-                    <li><span>ii. Limited Company @K2750 only</span> - comes with PACRA incorporation certificate &amp; ZRA T-PIN Certificate</li>
-                    <li><span>iii. PACRA Annual Returns @K500 only</span></li>
+                    <li><span>i. Business @K850</span> - Business Certificate</li>
+                    <li><span>ii. Limited Co. @K2750</span> - PACRA cert & ZRA T-PIN</li>
+                    <li><span>iii. Annual Returns @K500</span></li>
                 </ul>
             </div>
         </div>
