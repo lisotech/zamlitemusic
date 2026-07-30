@@ -416,7 +416,7 @@
             width: 100%;
         }
 
-        /* Featured Albums Grid Layout */
+        /* Featured Albums / Artists Grid Layout */
         /* Desktop Computer: Exactly 8 columns (8x8 max layout capability) */
         .albums-grid {
             display: grid;
@@ -436,7 +436,7 @@
             justify-content: space-between;
             transition: transform 0.2s ease, background-color 0.2s ease;
             cursor: pointer;
-            min-width: 0; /* Prevents flex items from overflowing grid cell widths */
+            min-width: 0;
         }
 
         .card:hover {
@@ -1008,7 +1008,23 @@
                     </div>
                     
                     <div class="cards-grid" id="cardsGrid">
-                        <!-- Card 1 -->
+                        <!-- Card 1 (Newly Attached Single Track: Tix'Teza Feat Dream Chaser - Do Me Bad) -->
+                        <div class="card" data-artist="Tix'Teza Feat Dream Chaser" data-track="Do Me Bad">
+                            <div class="artwork-container">
+                                <img src="tix.png" alt="Tix'Teza Feat Dream Chaser - Do Me Bad Artwork">
+                            </div>
+                            <div class="card-info">
+                                <div class="artist-name">Tix'Teza Feat Dream Chaser</div>
+                                <div class="track-title">Do Me Bad</div>
+                            </div>
+                            <audio src="Tix'-Teza-Ft-Dream-Chaser-Do-Me-Bad.mp3" preload="none"></audio>
+                            <div class="card-actions">
+                                <button class="action-btn play">Play</button>
+                                <a href="Tix'-Teza-Ft-Dream-Chaser-Do-Me-Bad.mp3" download="Tix'-Teza-Ft-Dream-Chaser-Do-Me-Bad.mp3" class="action-btn download">Down</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
                         <div class="card" data-artist="Egyptian" data-track="Drums of Pharaoh">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Egyptian - Drums of Pharaoh Artwork">
@@ -1024,7 +1040,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 2 -->
+                        <!-- Card 3 -->
                         <div class="card" data-artist="Driemo Ft Y-Maps" data-track="Ninvela So">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Driemo Ft Y-Maps - Ninvela So Artwork">
@@ -1040,7 +1056,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 3 -->
+                        <!-- Card 4 -->
                         <div class="card" data-artist="Driemo Ft Kae Chaps" data-track="Poko">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Driemo Ft Kae Chaps - Poko Artwork">
@@ -1056,7 +1072,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 4 -->
+                        <!-- Card 5 -->
                         <div class="card" data-artist="Dove Dee" data-track="Blame Me">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Dove Dee - Blame Me Artwork">
@@ -1072,7 +1088,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 5 -->
+                        <!-- Card 6 -->
                         <div class="card" data-artist="Kayz Adams" data-track="Revolution">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Kayz Adams - Revolution Artwork">
@@ -1088,7 +1104,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 6 -->
+                        <!-- Card 7 -->
                         <div class="card" data-artist="Rockstone Ft Yo-Maps" data-track="Bushe">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Rockstone Ft Yo-Maps - Bushe Artwork">
@@ -1104,7 +1120,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 7 -->
+                        <!-- Card 8 -->
                         <div class="card" data-artist="Jay-Rox Ft Slapdee" data-track="Finally">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Jay-Rox Ft Slapdee - Finally Artwork">
@@ -1120,7 +1136,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 8 -->
+                        <!-- Card 9 -->
                         <div class="card" data-artist="Alpha-Romeo Ft Chewe" data-track="Update 2">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Alpha-Romeo Ft Chewe - Update 2 Artwork">
@@ -1136,7 +1152,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 9 -->
+                        <!-- Card 10 -->
                         <div class="card" data-artist="Macky-2" data-track="Soilange">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Macky-2 - Soilange Artwork">
@@ -1152,7 +1168,7 @@
                             </div>
                         </div>
 
-                        <!-- Card 10 -->
+                        <!-- Card 11 -->
                         <div class="card" data-artist="T-Sean Ft Chef 187" data-track="Injato">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="T-Sean Ft Chef 187 - Injato Artwork">
@@ -1178,7 +1194,17 @@
                     </div>
                     
                     <div class="albums-grid" id="albumsGrid">
-                        <!-- Artist 1 -->
+                        <!-- Artist 1 (Tix'Teza Feat Dream Chaser mapped with tix.png) -->
+                        <div class="card album-card" data-artist="Tix'Teza Feat Dream Chaser">
+                            <div class="artwork-container">
+                                <img src="tix.png" alt="Tix'Teza Feat Dream Chaser Artwork">
+                            </div>
+                            <div class="card-info" style="text-align: center;">
+                                <div class="artist-name">Tix'Teza Feat Dream Chaser</div>
+                            </div>
+                        </div>
+
+                        <!-- Artist 2 -->
                         <div class="card album-card" data-artist="Egyptian">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Egyptian Artwork">
@@ -1188,7 +1214,7 @@
                             </div>
                         </div>
 
-                        <!-- Artist 2 -->
+                        <!-- Artist 3 -->
                         <div class="card album-card" data-artist="Dove Dee">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Dove Dee Artwork">
@@ -1198,7 +1224,7 @@
                             </div>
                         </div>
 
-                        <!-- Artist 3 -->
+                        <!-- Artist 4 -->
                         <div class="card album-card" data-artist="Jay-Rox Ft Slapdee">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Jay-Rox Ft Slapdee Artwork">
@@ -1208,7 +1234,7 @@
                             </div>
                         </div>
 
-                        <!-- Artist 4 -->
+                        <!-- Artist 5 -->
                         <div class="card album-card" data-artist="Driemo Ft Y-Maps">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Driemo Ft Y-Maps Artwork">
@@ -1218,7 +1244,7 @@
                             </div>
                         </div>
 
-                        <!-- Artist 5 -->
+                        <!-- Artist 6 -->
                         <div class="card album-card" data-artist="Kayz Adams">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Kayz Adams Artwork">
@@ -1228,7 +1254,7 @@
                             </div>
                         </div>
 
-                        <!-- Artist 6 -->
+                        <!-- Artist 7 -->
                         <div class="card album-card" data-artist="Rockstone Ft Yo-Maps">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Rockstone Ft Yo-Maps Artwork">
@@ -1238,23 +1264,13 @@
                             </div>
                         </div>
 
-                        <!-- Artist 7 -->
+                        <!-- Artist 8 -->
                         <div class="card album-card" data-artist="Alpha-Romeo Ft Chewe">
                             <div class="artwork-container">
                                 <img src="gart.png" alt="Alpha-Romeo Ft Chewe Artwork">
                             </div>
                             <div class="card-info" style="text-align: center;">
                                 <div class="artist-name">Alpha-Romeo Ft Chewe</div>
-                            </div>
-                        </div>
-
-                        <!-- Artist 8 -->
-                        <div class="card album-card" data-artist="Macky-2">
-                            <div class="artwork-container">
-                                <img src="gart.png" alt="Macky-2 Artwork">
-                            </div>
-                            <div class="card-info" style="text-align: center;">
-                                <div class="artist-name">Macky-2</div>
                             </div>
                         </div>
                     </div>
@@ -1329,31 +1345,31 @@
             }
         });
 
-        // Dataset mapping artists to their respective songs
+        // Dataset mapping artists to their respective songs and artwork
         const artistSongsData = {
+            "Tix'Teza Feat Dream Chaser": [
+                { artist: "Tix'Teza Feat Dream Chaser", track: "Do Me Bad", src: "Tix'-Teza-Ft-Dream-Chaser-Do-Me-Bad.mp3", img: "tix.png" }
+            ],
             "Egyptian": [
-                { artist: "Egyptian", track: "Drums of Pharaoh", src: "Egyptian-Pharaoh-Drums of Pharaoh.mp3" }
+                { artist: "Egyptian", track: "Drums of Pharaoh", src: "Egyptian-Pharaoh-Drums of Pharaoh.mp3", img: "gart.png" }
             ],
             "Dove Dee": [
-                { artist: "Dove Dee", track: "Blame Me", src: "Dove-Dee-ft-Goddy-Zambia-Blame-Me.mp3" }
+                { artist: "Dove Dee", track: "Blame Me", src: "Dove-Dee-ft-Goddy-Zambia-Blame-Me.mp3", img: "gart.png" }
             ],
             "Jay-Rox Ft Slapdee": [
-                { artist: "Jay-Rox Ft Slapdee", track: "Finally", src: "Jay-Rox-ft-Slapdee-Finally.mp3" }
+                { artist: "Jay-Rox Ft Slapdee", track: "Finally", src: "Jay-Rox-ft-Slapdee-Finally.mp3", img: "gart.png" }
             ],
             "Driemo Ft Y-Maps": [
-                { artist: "Driemo Ft Y-Maps", track: "Ninvela So", src: "Driemo-ft-Yo-Maps-Ninvela-So.mp3" }
+                { artist: "Driemo Ft Y-Maps", track: "Ninvela So", src: "Driemo-ft-Yo-Maps-Ninvela-So.mp3", img: "gart.png" }
             ],
             "Kayz Adams": [
-                { artist: "Kayz Adams", track: "Revolution", src: "Kayz-Adams-Revolution.mp3" }
+                { artist: "Kayz Adams", track: "Revolution", src: "Kayz-Adams-Revolution.mp3", img: "gart.png" }
             ],
             "Rockstone Ft Yo-Maps": [
-                { artist: "Rockstone Ft Yo-Maps", track: "Bushe", src: "Rockstone-Ft-Yo-Maps-Bushe.mp3" }
+                { artist: "Rockstone Ft Yo-Maps", track: "Bushe", src: "Rockstone-Ft-Yo-Maps-Bushe.mp3", img: "gart.png" }
             ],
             "Alpha-Romeo Ft Chewe": [
-                { artist: "Alpha-Romeo Ft Chewe", track: "Update 2", src: "Alpha-Romeo-ft-Chewe-Update-2.mp3" }
-            ],
-            "Macky-2": [
-                { artist: "Macky-2", track: "Soilange", src: "Macky-2-Soilange.mp3" }
+                { artist: "Alpha-Romeo Ft Chewe", track: "Update 2", src: "Alpha-Romeo-ft-Chewe-Update-2.mp3", img: "gart.png" }
             ]
         };
 
@@ -1368,9 +1384,12 @@
         document.querySelectorAll('.album-card').forEach(card => {
             card.addEventListener('click', () => {
                 const artistName = card.getAttribute('data-artist');
+                const imgElement = card.querySelector('img');
+                const artistImgSrc = imgElement ? imgElement.src : 'gart.png';
 
                 detailAlbumTitle.textContent = artistName;
                 detailArtistName.textContent = "Artist Profile & Songs";
+                detailAlbumArt.src = artistImgSrc;
                 
                 // Populate songs specifically matching the selected artist
                 detailSongsGrid.innerHTML = '';
@@ -1384,7 +1403,7 @@
                         songCard.className = 'card';
                         songCard.innerHTML = `
                             <div class="artwork-container">
-                                <img src="gart.png" alt="${song.track} Artwork">
+                                <img src="${song.img}" alt="${song.track} Artwork">
                             </div>
                             <div class="card-info">
                                 <div class="artist-name">${song.artist}</div>
