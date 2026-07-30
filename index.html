@@ -56,7 +56,7 @@
         /* Specific override for black theme to make MEDIA span orange */
         body.theme-black .logo-text-stack span,
         body.theme-black .mobile-brand-logo .logo-text-stack span {
-            color: #f97316 !important; /* Orange color */
+            color: #f97316 !important;
         }
 
         * {
@@ -136,7 +136,6 @@
             transition: color 0.3s ease;
         }
 
-        /* Close Button for Mobile Drawer */
         .sidebar-close-btn {
             background: none;
             border: none;
@@ -187,7 +186,6 @@
             color: var(--accent-color);
         }
 
-        /* Mobile Sign-in Container inside Sidebar */
         .sidebar-footer-action {
             padding: 12px 16px;
             border-top: 1px solid var(--border-color);
@@ -223,6 +221,7 @@
             min-height: 100vh;
             width: calc(100% - 240px);
             max-width: 100%;
+            overflow-x: hidden;
         }
 
         /* Top Header */
@@ -249,7 +248,6 @@
             max-width: 500px;
         }
 
-        /* Mobile inline brand logo (hidden on desktop) */
         .mobile-brand-logo {
             display: none;
             font-weight: 800;
@@ -330,7 +328,6 @@
             color: var(--accent-color);
         }
 
-        /* Hamburger Menu Toggle Button on Top Right */
         .menu-toggle {
             background: none;
             border: 1px solid var(--border-color);
@@ -355,6 +352,7 @@
             flex: 1;
             width: 100%;
             max-width: 100%;
+            overflow-x: hidden;
         }
 
         /* Hero Banner */
@@ -409,7 +407,7 @@
             color: var(--text-color);
         }
 
-        /* Grid Layout: Trending Songs grid (Responsive columns) */
+        /* Trending Songs Grid Layout */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -419,7 +417,7 @@
         }
 
         /* Featured Albums Grid Layout */
-        /* Desktop Computer: 8 columns by 8 rows max capability (Desktop configuration requested: 8x8 layout capability) */
+        /* Desktop Computer: Exactly 8 columns (8x8 max layout capability) */
         .albums-grid {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
@@ -438,6 +436,7 @@
             justify-content: space-between;
             transition: transform 0.2s ease, background-color 0.2s ease;
             cursor: pointer;
+            min-width: 0; /* Prevents flex items from overflowing grid cell widths */
         }
 
         .card:hover {
@@ -463,6 +462,7 @@
 
         .card-info {
             margin-bottom: 8px;
+            min-width: 0;
         }
 
         .artist-name {
@@ -528,7 +528,7 @@
             display: none;
         }
 
-        /* Full Page Album Detail View (Hidden by default) */
+        /* Full Page Artist Profile & Song Detail View (Opens on Artist/Album Selection) */
         .album-detail-view {
             display: none;
             position: fixed;
@@ -539,6 +539,7 @@
             background-color: var(--bg-color);
             z-index: 1000;
             overflow-y: auto;
+            overflow-x: hidden;
             padding: 24px;
             box-sizing: border-box;
         }
@@ -591,7 +592,7 @@
             font-size: 1rem;
         }
 
-        /* Footer - Reduced height */
+        /* Footer */
         footer {
             padding: 10px 16px;
             text-align: center;
@@ -653,7 +654,7 @@
             background-color: var(--accent-hover);
         }
 
-        /* Promo Popup Modal Styles (Reduced height & manual scroll enabled) */
+        /* Promo Popup Modal Styles */
         .promo-popup-overlay {
             position: fixed;
             top: 0;
@@ -781,7 +782,6 @@
             font-size: 0.8rem;
             color: var(--accent-color);
             font-weight: bold;
-            font-style: normal;
             margin-bottom: 2px;
         }
 
@@ -858,12 +858,13 @@
             }
 
             .cards-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3x3 layout on mobile for albums */
+                grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
             }
 
+            /* Mobile Albums View: strictly 3x3 layout showing only artist name */
             .albums-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3x3 layout on mobile as specified */
+                grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
             }
         }
@@ -922,21 +923,21 @@
         </div>
     </div>
 
-    <!-- Full Page Album Song Viewer (Opens on Selecting Album/Artist) -->
+    <!-- Full Page Artist Profile & Song Viewer (Opens on Selecting Artist/Album Profile) -->
     <div class="album-detail-view" id="albumDetailView">
         <button class="back-to-home-btn" id="backToHomeBtn">&#8592; Back to Home</button>
         <div class="album-detail-header">
-            <img src="gart.png" alt="Album Art" class="album-detail-art" id="detailAlbumArt">
+            <img src="gart.png" alt="Artist Profile Art" class="album-detail-art" id="detailAlbumArt">
             <div class="album-detail-info">
-                <h2 id="detailAlbumTitle">Album Name</h2>
-                <p id="detailArtistName">Artist Name</p>
+                <h2 id="detailAlbumTitle">Artist Name</h2>
+                <p id="detailArtistName">Featured Songs</p>
             </div>
         </div>
         <div class="section-header">
-            <div class="section-title">Album Songs</div>
+            <div class="section-title">Artist Songs</div>
         </div>
         <div class="cards-grid" id="detailSongsGrid">
-            <!-- Dynamically populated songs for the selected album -->
+            <!-- Dynamically populated songs for the selected artist profile -->
         </div>
     </div>
 
@@ -1169,44 +1170,91 @@
                     </div>
                 </section>
 
-                <!-- Featured Albums Section (Displays Artist Name only, 8x8 on desktop, 3x3 on mobile) -->
+                <!-- Featured Albums / Artists Section (8x8 on Desktop, 3x3 on Mobile showing only artist name) -->
                 <section>
                     <div class="section-header">
-                        <div class="section-title">Featured Albums</div>
+                        <div class="section-title">Featured Albums &amp; Artists</div>
                         <a href="#" class="view-all-link">VIEW ALL</a>
                     </div>
                     
                     <div class="albums-grid" id="albumsGrid">
-                        <!-- Album Card 1: Afrobeat Chronicles -->
-                        <div class="card album-card" data-album="Afrobeat Chronicles" data-artist="Egyptian">
+                        <!-- Artist 1 -->
+                        <div class="card album-card" data-artist="Egyptian">
                             <div class="artwork-container">
-                                <img src="gart.png" alt="Afrobeat Chronicles Artwork">
+                                <img src="gart.png" alt="Egyptian Artwork">
                             </div>
                             <div class="card-info" style="text-align: center;">
                                 <div class="artist-name">Egyptian</div>
-                                <div class="track-title" style="font-size: 0.7rem; color: var(--accent-color);">Afrobeat Chronicles</div>
                             </div>
                         </div>
 
-                        <!-- Album Card 2: Zambian Gold -->
-                        <div class="card album-card" data-album="Zambian Gold" data-artist="Dove Dee">
+                        <!-- Artist 2 -->
+                        <div class="card album-card" data-artist="Dove Dee">
                             <div class="artwork-container">
-                                <img src="gart.png" alt="Zambian Gold Artwork">
+                                <img src="gart.png" alt="Dove Dee Artwork">
                             </div>
                             <div class="card-info" style="text-align: center;">
                                 <div class="artist-name">Dove Dee</div>
-                                <div class="track-title" style="font-size: 0.7rem; color: var(--accent-color);">Zambian Gold</div>
                             </div>
                         </div>
 
-                        <!-- Album Card 3: Street Anthems -->
-                        <div class="card album-card" data-album="Street Anthems" data-artist="Jay-Rox Ft Slapdee">
+                        <!-- Artist 3 -->
+                        <div class="card album-card" data-artist="Jay-Rox Ft Slapdee">
                             <div class="artwork-container">
-                                <img src="gart.png" alt="Street Anthems Artwork">
+                                <img src="gart.png" alt="Jay-Rox Ft Slapdee Artwork">
                             </div>
                             <div class="card-info" style="text-align: center;">
                                 <div class="artist-name">Jay-Rox Ft Slapdee</div>
-                                <div class="track-title" style="font-size: 0.7rem; color: var(--accent-color);">Street Anthems</div>
+                            </div>
+                        </div>
+
+                        <!-- Artist 4 -->
+                        <div class="card album-card" data-artist="Driemo Ft Y-Maps">
+                            <div class="artwork-container">
+                                <img src="gart.png" alt="Driemo Ft Y-Maps Artwork">
+                            </div>
+                            <div class="card-info" style="text-align: center;">
+                                <div class="artist-name">Driemo Ft Y-Maps</div>
+                            </div>
+                        </div>
+
+                        <!-- Artist 5 -->
+                        <div class="card album-card" data-artist="Kayz Adams">
+                            <div class="artwork-container">
+                                <img src="gart.png" alt="Kayz Adams Artwork">
+                            </div>
+                            <div class="card-info" style="text-align: center;">
+                                <div class="artist-name">Kayz Adams</div>
+                            </div>
+                        </div>
+
+                        <!-- Artist 6 -->
+                        <div class="card album-card" data-artist="Rockstone Ft Yo-Maps">
+                            <div class="artwork-container">
+                                <img src="gart.png" alt="Rockstone Ft Yo-Maps Artwork">
+                            </div>
+                            <div class="card-info" style="text-align: center;">
+                                <div class="artist-name">Rockstone Ft Yo-Maps</div>
+                            </div>
+                        </div>
+
+                        <!-- Artist 7 -->
+                        <div class="card album-card" data-artist="Alpha-Romeo Ft Chewe">
+                            <div class="artwork-container">
+                                <img src="gart.png" alt="Alpha-Romeo Ft Chewe Artwork">
+                            </div>
+                            <div class="card-info" style="text-align: center;">
+                                <div class="artist-name">Alpha-Romeo Ft Chewe</div>
+                            </div>
+                        </div>
+
+                        <!-- Artist 8 -->
+                        <div class="card album-card" data-artist="Macky-2">
+                            <div class="artwork-container">
+                                <img src="gart.png" alt="Macky-2 Artwork">
+                            </div>
+                            <div class="card-info" style="text-align: center;">
+                                <div class="artist-name">Macky-2</div>
                             </div>
                         </div>
                     </div>
@@ -1281,26 +1329,35 @@
             }
         });
 
-        // Dataset containing 3 songs per album
-        const albumSongsData = {
-            "Afrobeat Chronicles": [
-                { artist: "Egyptian", track: "Drums of Pharaoh", src: "Egyptian-Pharaoh-Drums of Pharaoh.mp3" },
-                { artist: "Driemo Ft Y-Maps", track: "Ninvela So", src: "Driemo-ft-Yo-Maps-Ninvela-So.mp3" },
-                { artist: "Driemo Ft Kae Chaps", track: "Poko", src: "Driemo-ft-Kae-Chaps-Poko.mp3" }
+        // Dataset mapping artists to their respective songs
+        const artistSongsData = {
+            "Egyptian": [
+                { artist: "Egyptian", track: "Drums of Pharaoh", src: "Egyptian-Pharaoh-Drums of Pharaoh.mp3" }
             ],
-            "Zambian Gold": [
-                { artist: "Dove Dee", track: "Blame Me", src: "Dove-Dee-ft-Goddy-Zambia-Blame-Me.mp3" },
-                { artist: "Kayz Adams", track: "Revolution", src: "Kayz-Adams-Revolution.mp3" },
+            "Dove Dee": [
+                { artist: "Dove Dee", track: "Blame Me", src: "Dove-Dee-ft-Goddy-Zambia-Blame-Me.mp3" }
+            ],
+            "Jay-Rox Ft Slapdee": [
+                { artist: "Jay-Rox Ft Slapdee", track: "Finally", src: "Jay-Rox-ft-Slapdee-Finally.mp3" }
+            ],
+            "Driemo Ft Y-Maps": [
+                { artist: "Driemo Ft Y-Maps", track: "Ninvela So", src: "Driemo-ft-Yo-Maps-Ninvela-So.mp3" }
+            ],
+            "Kayz Adams": [
+                { artist: "Kayz Adams", track: "Revolution", src: "Kayz-Adams-Revolution.mp3" }
+            ],
+            "Rockstone Ft Yo-Maps": [
                 { artist: "Rockstone Ft Yo-Maps", track: "Bushe", src: "Rockstone-Ft-Yo-Maps-Bushe.mp3" }
             ],
-            "Street Anthems": [
-                { artist: "Jay-Rox Ft Slapdee", track: "Finally", src: "Jay-Rox-ft-Slapdee-Finally.mp3" },
-                { artist: "Alpha-Romeo Ft Chewe", track: "Update 2", src: "Alpha-Romeo-ft-Chewe-Update-2.mp3" },
+            "Alpha-Romeo Ft Chewe": [
+                { artist: "Alpha-Romeo Ft Chewe", track: "Update 2", src: "Alpha-Romeo-ft-Chewe-Update-2.mp3" }
+            ],
+            "Macky-2": [
                 { artist: "Macky-2", track: "Soilange", src: "Macky-2-Soilange.mp3" }
             ]
         };
 
-        // Full Page View Handler for Albums
+        // Full Page View Handler for Artists / Albums Profile Selection
         const albumDetailView = document.getElementById('albumDetailView');
         const backToHomeBtn = document.getElementById('backToHomeBtn');
         const detailAlbumArt = document.getElementById('detailAlbumArt');
@@ -1310,35 +1367,38 @@
 
         document.querySelectorAll('.album-card').forEach(card => {
             card.addEventListener('click', () => {
-                const albumName = card.getAttribute('data-album');
                 const artistName = card.getAttribute('data-artist');
 
-                detailAlbumTitle.textContent = albumName;
-                detailArtistName.textContent = `Artist: ${artistName}`;
+                detailAlbumTitle.textContent = artistName;
+                detailArtistName.textContent = "Artist Profile & Songs";
                 
-                // Populate songs for selected album
+                // Populate songs specifically matching the selected artist
                 detailSongsGrid.innerHTML = '';
-                const songs = albumSongsData[albumName] || [];
+                const songs = artistSongsData[artistName] || [];
 
-                songs.forEach(song => {
-                    const songCard = document.createElement('div');
-                    songCard.className = 'card';
-                    songCard.innerHTML = `
-                        <div class="artwork-container">
-                            <img src="gart.png" alt="${song.track} Artwork">
-                        </div>
-                        <div class="card-info">
-                            <div class="artist-name">${song.artist}</div>
-                            <div class="track-title">${song.track}</div>
-                        </div>
-                        <audio src="${song.src}" preload="none"></audio>
-                        <div class="card-actions">
-                            <button class="action-btn play">Play</button>
-                            <a href="${song.src}" download="${song.src}" class="action-btn download">Down</a>
-                        </div>
-                    `;
-                    detailSongsGrid.appendChild(songCard);
-                });
+                if (songs.length === 0) {
+                    detailSongsGrid.innerHTML = '<div class="no-results" style="display:block;">No songs available for this artist yet.</div>';
+                } else {
+                    songs.forEach(song => {
+                        const songCard = document.createElement('div');
+                        songCard.className = 'card';
+                        songCard.innerHTML = `
+                            <div class="artwork-container">
+                                <img src="gart.png" alt="${song.track} Artwork">
+                            </div>
+                            <div class="card-info">
+                                <div class="artist-name">${song.artist}</div>
+                                <div class="track-title">${song.track}</div>
+                            </div>
+                            <audio src="${song.src}" preload="none"></audio>
+                            <div class="card-actions">
+                                <button class="action-btn play">Play</button>
+                                <a href="${song.src}" download="${song.src}" class="action-btn download">Down</a>
+                            </div>
+                        `;
+                        detailSongsGrid.appendChild(songCard);
+                    });
+                }
 
                 // Attach audio playback listeners to the newly created song cards inside the full view
                 setupAudioPlayers(detailSongsGrid);
