@@ -417,7 +417,6 @@
         }
 
         /* Featured Albums / Artists Grid Layout */
-        /* Desktop Computer: Exactly 8 columns (8x8 max layout capability) */
         .albums-grid {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
@@ -528,7 +527,7 @@
             display: none;
         }
 
-        /* Full Page Artist Profile & Song Detail View (Opens on Artist/Album Selection) */
+        /* Full Page Artist Profile & Song Detail View */
         .album-detail-view {
             display: none;
             position: fixed;
@@ -824,7 +823,7 @@
             display: block;
         }
 
-        /* Responsive Layout Adjustments for Mobile & Tablets */
+        /* Responsive Layout Adjustments */
         @media (max-width: 1024px) {
             aside.sidebar {
                 transform: translateX(-100%);
@@ -862,7 +861,6 @@
                 gap: 10px;
             }
 
-            /* Mobile Albums View: strictly 3x3 layout showing only artist name */
             .albums-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
@@ -923,7 +921,7 @@
         </div>
     </div>
 
-    <!-- Full Page Artist Profile & Song Viewer (Opens on Selecting Artist/Album Profile) -->
+    <!-- Full Page Artist Profile & Song Viewer -->
     <div class="album-detail-view" id="albumDetailView">
         <button class="back-to-home-btn" id="backToHomeBtn">&#8592; Back to Home</button>
         <div class="album-detail-header">
@@ -1008,7 +1006,7 @@
                     </div>
                     
                     <div class="cards-grid" id="cardsGrid">
-                        <!-- Card 1 (Updated Audio Source: Tix-Teza-Ft-Dream-Chaser-Do-Me-Bad.mp3) -->
+                        <!-- Card 1 -->
                         <div class="card" data-artist="Tix'Teza Feat Dream Chaser" data-track="Do Me Bad">
                             <div class="artwork-container">
                                 <img src="tix.png" alt="Tix'Teza Feat Dream Chaser - Do Me Bad Artwork">
@@ -1292,7 +1290,7 @@
         <button class="theme-toggle-main-btn" id="themeToggleMainBtn" title="Change Theme">☀️</button>
     </div>
 
-    <!-- Script handling interactions, full page view, 8x8 desktop & 3x3 mobile grids -->
+    <!-- Script handling interactions -->
     <script>
         // Sidebar Drawer Toggle
         const menuToggle = document.getElementById('menuToggle');
@@ -1309,7 +1307,7 @@
         sidebarCloseBtn.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', toggleSidebar);
 
-        // Promo Popup 7-Second Delay & 3-Minute Countdown
+        // Promo Popup Delay & Timer
         const promoPopup = document.getElementById('promoPopup');
         const promoCloseBtn = document.getElementById('promoCloseBtn');
         const promoTimerText = document.getElementById('promoTimerText');
@@ -1345,7 +1343,7 @@
             }
         });
 
-        // Dataset mapping artists to their respective songs and artwork (Updated Audio Source)
+        // Expanded Dataset mapping artists to their respective songs, audio files, and artwork
         const artistSongsData = {
             "Tix'Teza Feat Dream Chaser": [
                 { artist: "Tix'Teza Feat Dream Chaser", track: "Do Me Bad", src: "Tix-Teza-Ft-Dream-Chaser-Do-Me-Bad.mp3", img: "tix.png" }
@@ -1391,7 +1389,7 @@
                 detailArtistName.textContent = "Artist Profile & Songs";
                 detailAlbumArt.src = artistImgSrc;
                 
-                // Populate songs specifically matching the selected artist
+                // Populate songs matching the selected artist
                 detailSongsGrid.innerHTML = '';
                 const songs = artistSongsData[artistName] || [];
 
@@ -1401,6 +1399,8 @@
                     songs.forEach(song => {
                         const songCard = document.createElement('div');
                         songCard.className = 'card';
+                        songCard.setAttribute('data-artist', song.artist);
+                        songCard.setAttribute('data-track', song.track);
                         songCard.innerHTML = `
                             <div class="artwork-container">
                                 <img src="${song.img}" alt="${song.track} Artwork">
@@ -1419,7 +1419,7 @@
                     });
                 }
 
-                // Attach audio playback listeners to the newly created song cards inside the full view
+                // Attach audio listeners to dynamically created cards
                 setupAudioPlayers(detailSongsGrid);
 
                 albumDetailView.classList.add('active');
@@ -1428,7 +1428,6 @@
 
         backToHomeBtn.addEventListener('click', () => {
             albumDetailView.classList.remove('active');
-            // Pause any playing audio when closing full page view
             document.querySelectorAll('audio').forEach(a => {
                 a.pause();
                 a.currentTime = 0;
@@ -1457,7 +1456,6 @@
                                 playBtn.textContent = 'Pause';
                             }).catch(e => {
                                 console.log("Audio playback error:", e);
-                                alert("Please ensure the audio file exists and is accessible.");
                             });
                         } else {
                             audio.pause();
@@ -1472,7 +1470,6 @@
             });
         }
 
-        // Initialize audio players for default trending songs on home page
         setupAudioPlayers(document.body);
 
         // Search Engine Functionality
@@ -1503,7 +1500,7 @@
             }
         });
 
-        // Automatic Theme Cycling via Floating Sun Button
+        // Automatic Theme Cycling
         const themeToggleMainBtn = document.getElementById('themeToggleMainBtn');
         const themes = ['default', 'white', 'green', 'black'];
 
